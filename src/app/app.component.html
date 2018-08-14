@@ -2,12 +2,13 @@
 <div style="text-align:center">
   <h1>Tap Room {{month}}/{{day}}/{{year}}</h1>
 
-  <p *ngFor="let keg of kegs">{{keg.name}} || {{keg.brand}} || {{keg.type}} || {{keg.alcholContent}} || ${{keg.price}} <button (click)="sellPint(keg)">Sell</button>  Avails: {{keg.pints}} <button (click)="editKeg(keg)">Edit</button></p>
+  <p [class]='kegAlert(keg)' *ngFor="let keg of kegs">{{keg.name}} || {{keg.brand}} || {{keg.type}} || {{keg.alcholContent}} || ${{keg.price}} <button (click)="sellPint(keg)">Sell</button>  Avails: {{keg.pints}} <button (click)="editKeg(keg)">Edit</button><button (click)="changeKeg(keg)">Change Keg</button></p>
 </div>
+<button (click)="addKeg(type, name, brand, price, content)"> Add Keg</button>
 
 
 <div *ngIf="selectedKeg">
-    <h3>{{selectedKeg.description}}</h3>
+    <h3>{{selectedKeg.name}}</h3>
     <h3>Edit Tap</h3>
     <label>Name:</label>
     <input [(ngModel)]="selectedKeg.name"><br>

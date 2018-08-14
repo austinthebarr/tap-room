@@ -14,7 +14,7 @@ export class AppComponent {
 
   kegs: Keg[] =[
     new Keg('Lager', 'Brooklyn Lager', 'Brooklyn Brewery', 6, '5.2%'),
-    new Keg('IPA', 'Fremont IPA', 'FremontBrewing Company', 5, '6,2%'),
+    new Keg('IPA', 'Fremont IPA', 'FremontBrewing Company', 5, '6.2%'),
     new Keg('Bavarian Bright Lager', 'Hello, World!','Optimism Brewing', 6, '5.3%'),
   ]
   sellPint(keg){
@@ -22,10 +22,26 @@ export class AppComponent {
     console.log(keg.pints)
   }
   selectedKeg = null;
+
   editKeg(clickedKeg){
     this.selectedKeg = clickedKeg;
   }
   finishedEditing(){
     this.selectedKeg = null;
+  }
+  addKeg(type, name, brand, price, content){
+    this.kegs.push(new Keg(type, name, brand, price, content))
+  }
+  kegAlert(keg){
+    if(keg.pints === 0){
+      alert("KEG IS OUT")
+      return "bg-danger";
+    }else if(keg.pints <= 10){
+      return "bg-warning";
+
+    }
+  }
+  changeKeg(keg){
+    keg.pints = 124;
   }
 }
